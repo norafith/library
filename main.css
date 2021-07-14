@@ -1,0 +1,94 @@
+:root {
+    --textColor: #548CA8;
+    --bodyBgColor: #EEEEEE;
+    --buttonBorderWidth: 3px;
+    --buttonBorder: var(--buttonBorderWidth) solid var(--textColor);
+    --formAndBooksPadding: 15px;
+    --widthOfBlocks: 70vw;
+    --fontSize: 16px;
+    --standardMargin: 10px;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--textColor);
+}
+
+body {
+    background-color: var(--bodyBgColor);
+    font-size: var(--fontSize);
+}
+
+header {
+    text-align: center;
+}
+
+#create-book {
+    display: flex;
+    justify-content: center;
+    width: var(--widthOfBlocks);
+    box-sizing: border-box;
+    margin: auto;
+    padding-bottom: var(--formAndBooksPadding);
+    border-bottom: var(--buttonBorder);
+}
+
+#create-book-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#create-book-form div {
+    display: inline-block;
+}
+
+.form-part {
+    margin: var(--standardMargin);
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--textColor);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+input {
+    border: var(--buttonBorder);
+    border-radius: 25px;
+}
+
+::placeholder {
+    color: var(--textColor);
+}
+
+input, button {
+    font-size: var(--fontSize);
+    margin: var(--standardMargin);
+    padding: 10px;
+    outline: none;
+}
+
+#all-books-container {
+    margin: auto;
+    width: fit-content;
+}
+
+.book {
+    padding: var(--formAndBooksPadding);
+    border-bottom: var(--buttonBorder);
+    width: var(--widthOfBlocks);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.book * {
+    margin: var(--standardMargin);
+}
+
+.title {
+    font-size: 1.1em;
+    font-weight: 600;
+}
