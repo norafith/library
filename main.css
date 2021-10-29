@@ -1,94 +1,187 @@
 :root {
-    --textColor: #548CA8;
-    --bodyBgColor: #EEEEEE;
-    --buttonBorderWidth: 3px;
-    --buttonBorder: var(--buttonBorderWidth) solid var(--textColor);
-    --formAndBooksPadding: 15px;
-    --widthOfBlocks: 70vw;
-    --fontSize: 16px;
-    --standardMargin: 10px;
+  --mainColor: #548ca8;
+  --secondMainColor: #45748b;
+  --bodyBgColor: #eeeeee;
+  --buttonBorderWidth: 3px;
+  --buttonBorder: var(--buttonBorderWidth) solid var(--mainColor);
+  --formAndBooksPadding: 15px;
+  --widthOfBlocks: 70vw;
+  --fontSize: 16px;
+  --standardMargin: 10px;
 }
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--textColor);
+  font-family: "Roboto", sans-serif, Arial;
+  color: var(--mainColor);
 }
 
 body {
-    background-color: var(--bodyBgColor);
-    font-size: var(--fontSize);
+  background-color: var(--bodyBgColor);
+  font-size: var(--fontSize);
+  min-width: 275px;
+  margin: 0;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
 
 #create-book {
-    display: flex;
-    justify-content: center;
-    width: var(--widthOfBlocks);
-    box-sizing: border-box;
-    margin: auto;
-    padding-bottom: var(--formAndBooksPadding);
-    border-bottom: var(--buttonBorder);
+  display: flex;
+  justify-content: center;
+  width: var(--widthOfBlocks);
+  box-sizing: border-box;
+  margin: auto;
+  padding-bottom: var(--formAndBooksPadding);
+  border-bottom: var(--buttonBorder);
 }
 
 #create-book-form {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 #create-book-form div {
-    display: inline-block;
+  display: inline-block;
 }
 
 .form-part {
-    margin: var(--standardMargin);
+  margin: var(--standardMargin);
 }
 
 button {
-    cursor: pointer;
-    background-color: var(--textColor);
-    color: white;
-    border: none;
-    border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--mainColor);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--secondMainColor);
 }
 
 input {
-    border: var(--buttonBorder);
-    border-radius: 25px;
+  border: var(--buttonBorder);
+  border-radius: 25px;
 }
 
 ::placeholder {
-    color: var(--textColor);
+  color: var(--mainColor);
 }
 
-input, button {
-    font-size: var(--fontSize);
-    margin: var(--standardMargin);
-    padding: 10px;
-    outline: none;
+input,
+button {
+  font-size: var(--fontSize);
+  margin: var(--standardMargin);
+  padding: 10px;
+  outline: none;
 }
 
 #all-books-container {
-    margin: auto;
-    width: fit-content;
+  margin: auto;
+  width: fit-content;
 }
 
 .book {
-    padding: var(--formAndBooksPadding);
-    border-bottom: var(--buttonBorder);
-    width: var(--widthOfBlocks);
-    box-sizing: border-box;
-    text-align: center;
+  padding: var(--formAndBooksPadding);
+  border-bottom: var(--buttonBorder);
+  width: var(--widthOfBlocks);
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .book * {
-    margin: var(--standardMargin);
+  margin: var(--standardMargin);
 }
 
 .title {
-    font-size: 1.1em;
-    font-weight: 600;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+#error-container {
+  width: 400px;
+  height: 500px;
+  background-color: var(--secondMainColor);
+  text-align: center;
+  border-radius: 25px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 5vh auto;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
+}
+
+#error-container * {
+  color: var(--bodyBgColor);
+}
+
+#error-container.visible {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1000;
+}
+
+#error-header {
+  position: relative;
+  padding: 15px;
+  border-bottom: 1px solid white;
+  font-size: 1.25em;
+}
+
+#error-msg {
+  margin: 15px;
+}
+
+#close-error-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: color 0.2s linear;
+  cursor: pointer;
+}
+
+#close-error-btn:hover {
+  color: rgb(160, 160, 160);
+}
+
+#page-wrapper {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #333;
+  transition: opacity 0.3s ease;
+}
+
+#page-wrapper.visible {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+@media screen and (max-width: 420px) {
+  #error-container {
+    width: 300px;
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #error-container {
+    width: 250px;
+  }
 }
